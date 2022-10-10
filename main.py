@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # --------------------------------------------------
 # Typing Test
-# Filipe Gonçalves, 98083
+# Filipe Goncalves, 98083
 # Hugo Hahimoto, 92226
 # Guilherme Cajeira, 93138
 # PSR, October 2022.
@@ -57,11 +57,11 @@ def playGame(args):
         # break the loop depending on time mode
         if args.use_time_mode == True:
             if end_game - game_start >= args.max_value:
-                print("\nCurrent test duration " + Fore.RED + str(end_game - game_start) + Style.RESET_ALL + " exceeds maximum of " + Fore.CYAN + str(args.max_value) + Style.RESET_ALL) 
+                print("\nCurrent test duration " + Fore.LIGHTMAGENTA_EX + str(end_game - game_start) + Style.RESET_ALL + " exceeds maximum of " + Fore.CYAN + str(args.max_value) + Style.RESET_ALL) 
                 break
         else:
             if count >= args.max_value:
-                print("\nCurrent test inputs " + Fore.RED + str(count) + Style.RESET_ALL + " reaches maximum of " + Fore.CYAN + str(args.max_value) + Style.RESET_ALL) 
+                print("\nCurrent test inputs " + Fore.LIGHTGREEN_EX + str(count) + Style.RESET_ALL + " reaches maximum of " + Fore.LIGHTBLUE_EX + str(args.max_value) + Style.RESET_ALL) 
                 break
 
     # return values
