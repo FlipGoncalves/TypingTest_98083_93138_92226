@@ -1,7 +1,7 @@
 Aula 4 - PSR
 =============
 Miguel Riem Oliveira <mriem@ua.pt>
-2021-2022
+2022-2023
 
 // Instruções especiais para o asciidoc usar icons no output
 :icons: html5
@@ -124,4 +124,4 @@ pprint(my_dict)
 Avaliação
 ---------
 A avaliação será feita com base na existência e qualidade das funcionalidades acima descritas. A organização e legibilidade do código também poderá ser tida em conta.
------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------
