@@ -21,7 +21,8 @@ Input = namedtuple('Input', ['requested', 'received', 'duration'])
 
 INPUTS = []
 
-
+# Function responsible for calculating statistics
+#   Return: Dictionary with game statistics
 def Statistics(hits, total, start_game, end_game):
     accuracy = hits / total
     game_duration = end_game - start_game
@@ -44,7 +45,8 @@ def Statistics(hits, total, start_game, end_game):
 
     return statistics
 
-
+# Function responsible for realization the game
+#   Return: Values needed to calculate statistics
 def TypingTest(args):
     start_game = time()
     total = 0
@@ -85,16 +87,25 @@ def TypingTest(args):
 
 
 def main():
+    # Define argparse inputs:
+    #   - use_time_value: TRUE, if the user wants to define the maximum number of seconds
+    #                     FALSE, if the user wants to define the maximum number of inputs
+    #   - max_value: define maximum number of seconds if use_time_value is TRUE
+    #                define maximum number of inputs if use_time_value is FALSE
     parser = argparse.ArgumentParser(description='Definition of ' + Style.BRIGHT + Fore.BLUE + 'test ' +  Style.RESET_ALL + 'mode')
     parser.add_argument('-utm', '--use_time_mode', action='store_true', help='Max number of secs ' + Style.BRIGHT + Fore.RED + 'for time ' +  Style.RESET_ALL + 'mode or maximum number of inputs ' + Style.BRIGHT + Fore.RED + 'for ' +  Style.RESET_ALL + 'number of inputs mode.', required=False)
     parser.add_argument('-mv', '--max_value', type=int, help='Max number of seconds ' + Style.BRIGHT + Fore.RED + 'for time ' +  Style.RESET_ALL + 'mode or maximum number of inputs ' + Style.BRIGHT + Fore.RED + 'for ' +  Style.RESET_ALL + 'number of inputs mode.', required=False)
     args = parser.parse_args()
+
+    # Print args for the user to see the chosen arguments
     print(args)
 
+    # If the arguments are invalid, the test does not start, showing an error message
     if args.max_value == None or args.max_value <= 0:
         print(Back.RED + Style.BRIGHT + Fore.WHITE + "Inputted arguments are invalid!" + Style.RESET_ALL )
         exit(0)
 
+    # Print the game (Typing Test) and the group membres
     print('---------------------------------')
     print('|        ' + Style.BRIGHT + Fore.RED + 'PSR ' + Style.RESET_ALL + 'Typing Test' + '        |')
     print('|                               |')
@@ -104,18 +115,23 @@ def main():
     print('|         Hugo Hashimoto        |')
     print('---------------------------------\n')
 
+    # Print the type of game the user decided to play
     if args.use_time_mode == False:
         print("Test running up up " + str(args.max_value) + " inputs.")
     else:
         print("Test running up up " + str(args.max_value) + " seconds.")
 
+    # Print the condition to start playing (press any key)
     print("Press " + Back.CYAN + Style.BRIGHT + Fore.WHITE + "any key" + Style.RESET_ALL + " to start the test")
     start_key = readchar.readchar()
 
+    # Call the function responsible for realization the game
     my_dict = TypingTest(args)
 
+    # Print the game is finish
     print(Style.BRIGHT + Fore.YELLOW + "Test Finished!\n" + Style.RESET_ALL)
 
+    # Print game statistics
     pprint(my_dict)
 
 
